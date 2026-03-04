@@ -7,3 +7,4 @@ if edad > 18 and edad < 25:
         print("No aplica para subsidio.")
 if edad > 0 and edad < 18 or edad >= 25 and edad <= 60:
     print("No aplica para subsidio.")
+    #
