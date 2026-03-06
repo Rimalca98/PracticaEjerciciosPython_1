@@ -15,27 +15,21 @@ while opcion < 1 or opcion > 3:
     opcion = int(input("Seleccione una opción: "))
 
 if opcion == 1:
-    print("Su saldo actual es de:  $", saldo)
-    input("Gracias por usar el cajero automático, presiona enter para salir...")
+    print(f"Su saldo actual es de:  ${saldo}")
 
 elif opcion == 2:
-        print("Usted ha seleccionado retirar dinero.")
-        retiro = int(input("Que cantidad va a retirar? $ "))
+    print("Usted ha seleccionado retirar dinero.")
+    retiro = int(input("Que cantidad va a retirar? $ "))
 
-        while retiro <= 0:
+    while retiro <= 0 or retiro > saldo:
+        if retiro <= 0:
             print("Monto invalido, Ingrese un monto valido...")
-            retiro = int(input("Que cantidad va a retirar? $ "))
-
-        while retiro > saldo:
-            print("Fondos Insuficientes...")
-            retiro = int(input("Que cantidad va a retirar? $ "))    
-            if retiro < 0:
-                print("Ingrese un monto valido...")
-        
         else:
-            print("Transaccion completada!")
-            print("Su nuevo saldo es de: $", saldo - retiro )
-            input("Gracias por usar el cajero automático, presiona enter para salir...")
+            print(f"Saldo insuficiente, tu saldo es de: {saldo}")
+        retiro = int(input("Que cantidad desea retirar: $ "))
+    saldo -= retiro
+    print(f"Transaccion completada, su nuevo saldo es de: $ {saldo}")
+                 
 
 
 elif opcion == 3:
@@ -43,11 +37,12 @@ elif opcion == 3:
     deposito = int(input("Que cantidad va a depositar? $ "))    
     
     while deposito <= 0:
-            print("Monto invalido, Ingrese un monto valido...")
-            deposito = int(input("Que cantidad va a depositar? $ "))
-    if deposito > 0:
-        print(f"Deposito correcto, nuevo saldo: $ {saldo + deposito}")
-        input("Gracias por usar el cajero automático, presiona enter para salir...")
+        print("Monto invalido, Ingrese un monto valido...")
+        deposito = int(input("Que cantidad va a depositar? $ "))
+    saldo += deposito
+    print(f"Deposito correcto, nuevo saldo: $ {saldo}")
+        
+input("\nGracias por usar el cajero automático. Presiona Enter para salir...")
                 
 
 
